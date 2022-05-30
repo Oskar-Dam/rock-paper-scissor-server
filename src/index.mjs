@@ -8,12 +8,12 @@ app.use(function(req, res, next) {
 next();
 });
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3001
 
 
 app.post('/api/image', (req, res) => {
     //TODO analyze image
-
+    
     try {
         const value = Math.floor(Math.random() * (3 - 0)) + 0
 

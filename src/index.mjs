@@ -8,16 +8,27 @@ app.use(function(req, res, next) {
 next();
 });
 
-const PORT = process.env.PORT || 3001
-
+const PORT = process.env.PORT || 3000
+const elements = ["HARRI", "PAPER", "GURAIZE"]
 
 app.post('/api/image', (req, res) => {
     //TODO analyze image
-    
+    // IZASKUN CODE
+
+
+    let gameResult;
     try {
         const value = Math.floor(Math.random() * (3 - 0)) + 0
 
-        res.status(200).json({ message: value})    
+        if (value === 0) {
+            gameResult = "ORDENADOR GANA. LA PIEDRA GANA A LAS TIJERAS"
+          } else if (value == 2) {
+            gameResult = "EMPATE"
+          } else {
+            gameResult = "JUGADOR GANA. LAS TIJERAS CORTAN EL PAPEL"
+          }
+
+        res.status(200).json({ index: value, message: gameResult, element: elements[value]})    
     } catch (error) {
         console.log("Error Rock-Paper-Scissor Service")
         console.log(error)
